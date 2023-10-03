@@ -11,7 +11,6 @@ const Home = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const [token, setToken] = useState(null);
-  console.log("TOKEN", token);
   const captchaRef = useRef(null);
 
   useEffect(() => {
@@ -34,31 +33,33 @@ const Home = () => {
 
   //Re-fetch
   const handleRefetch = async (e) => {
-    if (!token) {
-      typeof window !== "undefined" &&
-        window.alert(
-          "Please verify you're not a robot by solving the captcha !"
-        );
-      return;
-    }
-    e.preventDefault();
+    // if (!token) {
+    //   typeof window !== "undefined" &&
+    //     window.alert(
+    //       "Please verify you're not a robot by solving the captcha !"
+    //     );
+    //   return;
+    // }
+    // e.preventDefault();
     setLoading(true);
-    const { data } = await axios.post("/api/verify", { token: token });
-    if (data.success) {
-      try {
-        const { data } = await axios.post("/api/refetch", {
-          url: url,
-        });
-        setData(data.results);
-        setLoading(false);
-      } catch (error) {
-        typeof window !== "undefined" && window.alert("Something went wrong !");
-        console.error(error);
-        setLoading(false);
-      }
-    } else {
-      console.log("Something went wrong !");
+    // const { data } = await axios.post("/api/verify", { token: token });
+    // console.log("token", token);
+
+    // if (data.success) {
+    try {
+      const { data } = await axios.post("/api/refetch", {
+        url: url,
+      });
+      setData(data.results);
+      setLoading(false);
+    } catch (error) {
+      typeof window !== "undefined" && window.alert("Something went wrong !");
+      console.error(error);
+      setLoading(false);
     }
+    // } else {
+    //   console.log("Something went wrong !");
+    // }
   };
 
   //Downloading JSON file
@@ -92,20 +93,20 @@ const Home = () => {
             disabled={!isEditing}
             className="bg-slate-800 text-normal pl-4 font-bold py-1.5 text-white rounded-sm w-[400px]"
           />
-          <button
+          {/* <button
             onClick={() => setIsEditing(!isEditing)}
             className="ml-1 bg-sky-700 uppercase font-bold rounded tracking-widest py-2 px-3 text-sm flex items-center"
           >
             {isEditing ? "Save" : "Edit"}
-          </button>
+          </button> */}
         </div>
-        <div className="flex justify-center mb-2">
+        {/* <div className="flex justify-center mb-2">
           <HCaptcha
             sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY}
             onVerify={setToken}
             ref={captchaRef}
           />
-        </div>
+        </div> */}
 
         <div className="flex justify-center gap-2">
           <button

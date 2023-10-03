@@ -2,6 +2,8 @@ import { join } from "path";
 import { readFile } from "fs/promises";
 
 export default async (req, res) => {
+  const { date } = req.query;
+  console.log("Data", date);
   try {
     // Get the file path to result.json in the public folder
     const filePath = join(process.cwd(), "public", "result.json");
@@ -21,3 +23,4 @@ export default async (req, res) => {
       .json({ error: "An error occurred while fetching the data" });
   }
 };
+

@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const { token } = req.body;
   try {
     const data = await verify(`${process.env.CAPTCHA_SECRET_KEY}`, token);
-    console.log(data);
+
     if (data.success) {
       res.status(200).json({ success: true });
     } else {

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   if (!url) {
     res.status(400).json({ success: false, message: "Url is missing !" });
   }
-  console.log(process.env.SCRAPING_BEE_SECRET);
+
   const client = new ScrapingBeeClient(`${process.env.SCRAPING_BEE_SECRET}`);
 
   const { status, data } = await client.get({
