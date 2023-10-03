@@ -90,7 +90,7 @@ const Home = () => {
             placeholder="Website url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            disabled={!isEditing}
+          
             className="bg-slate-800 text-normal pl-4 font-bold py-1.5 text-white rounded-sm w-[400px]"
           />
           {/* <button

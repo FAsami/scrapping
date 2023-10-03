@@ -6,6 +6,7 @@ import { convertToStructure } from "../../../utils/convertToStructure";
 
 export default async function handler(req, res) {
   const url = req.body.url;
+  console.log("URL", req.body.url);
   if (!url) {
     res.status(400).json({ success: false, message: "Url is missing !" });
   }
@@ -21,7 +22,9 @@ export default async function handler(req, res) {
   if (status === 200) {
     const jsonString = data.toString("utf8");
     const jsonObject = JSON.parse(jsonString);
-    const converted = convertToStructure(jsonObject);
+    const regex = /(\d+)$/;
+    const date = url.match(regex)[0];
+    const converted = convertToStructure(jsonObject, date);
     try {
       const filePath = path.join(process.cwd(), "public", "result.json");
       fs.writeFileSync(filePath, JSON.stringify(converted, null, 2));

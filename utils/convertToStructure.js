@@ -1,6 +1,6 @@
 let structure = {
   THAI_GOV_LOTTO: {
-    round_date: "16062562",
+    round_date: "",
     results: [
       {
         prize_type: "1ST",
@@ -52,7 +52,7 @@ let structure = {
   },
 };
 
-export const convertToStructure = (data) => {
+export const convertToStructure = (data, date) => {
   const updatedResults = structure.THAI_GOV_LOTTO.results.map((node) => {
     return {
       prize_type: node.prize_type,
@@ -60,6 +60,7 @@ export const convertToStructure = (data) => {
       result: data[`${node.prize_type}_result`],
     };
   });
+  structure.THAI_GOV_LOTTO.round_date = date;
   structure.THAI_GOV_LOTTO.results = updatedResults;
   return structure;
 };

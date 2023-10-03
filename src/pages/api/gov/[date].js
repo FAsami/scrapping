@@ -12,6 +12,7 @@ export default async (req, res) => {
       message: "Please provide a date",
     });
   }
+  console.log("date", getDate(date));
 
   const url = `https://news.sanook.com/lotto/check/${getDate(date)}`;
 
@@ -23,10 +24,14 @@ export default async (req, res) => {
       extract_rules: extractRules,
     },
   });
+  console.log("URL", url);
   if (status === 200) {
     const jsonString = data.toString("utf8");
     const jsonObject = JSON.parse(jsonString);
-    const converted = convertToStructure(jsonObject);
+    const regex = /(\d+)$/;
+    const date = url.match(regex)[0];
+
+    const converted = convertToStructure(jsonObject, date);
     res
       .status(200)
       .json({ message: "File written successfully", results: converted });
@@ -53,7 +58,7 @@ export default async (req, res) => {
 };
 
 const getDate = (dString) => {
-  const date = dString.substring(0, 3);
+  const date = dString.substring(0, 4);
   let year = Number(dString.substring(3, dString.length)) + 543;
   return `${date}${year}`;
 };

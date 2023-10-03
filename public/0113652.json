@@ -1,0 +1,55 @@
+{
+  "THAI_GOV_LOTTO": {
+    "round_date": "0113109",
+    "results": [
+      {
+        "prize_type": "1ST",
+        "prize_amount": "",
+        "result": ""
+      },
+      {
+        "prize_type": "3D_FRONT",
+        "prize_amount": "",
+        "result": []
+      },
+      {
+        "prize_type": "3D_BACK",
+        "prize_amount": "",
+        "result": []
+      },
+      {
+        "prize_type": "2D",
+        "prize_amount": "",
+        "result": ""
+      },
+      {
+        "prize_type": "1ST_SIDE",
+        "prize_amount": "",
+        "result": []
+      },
+      {
+        "prize_type": "2ND",
+        "prize_amount": "",
+        "result": []
+      },
+      {
+        "prize_type": "3RD",
+        "prize_amount": "",
+        "result": []
+      },
+      {
+        "prize_type": "4TH",
+        "prize_amount": "",
+        "result": []
+      },
+      {
+        "prize_type": "5TH",
+        "prize_amount": "",
+        "result": []
+      }
+    ],
+    "round_status": [
+      "FINISH"
+    ]
+  }
+}
